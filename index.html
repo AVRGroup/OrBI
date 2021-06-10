@@ -23,8 +23,6 @@
         }
 
         h2 {
-            /* scroll-padding: 1em;
-             */
             padding-top: 1.15em;
         }
 
@@ -50,7 +48,7 @@
     <header class="w3-display-container w3-opacity">
 
         <div class="w3-display-middle w3-wide w3-center">
-            <h1 id="title"><b>OrBI</b></h1>
+            <h1 id="title">OrBI</b></h1>
             <span class="w3-hide-small w3-black w3-padding"> Orbit-Based Interface</span>
         </div>
 
@@ -63,7 +61,7 @@
         <div class="w3-container w3-content w3-padding" style=" width: 80vw; max-width: 1536px;">
             <div class="w3-opacity">
                 <h2 id="about"><b>About</b></h2>
-                <p>
+                <p id="about-text-1">
                     OrBI is a virtual reality user interface developed with A-FRAME, a virtual reality framework built
                     on top of the
                     THREE.JS 3D library, which means that it can run on Oculus Quest, Rift, WMR, SteamVR, desktop, and
@@ -71,14 +69,15 @@
                     though the latter is the focus of this project.
                 </p>
 
-                <p>
+                <p id="about-text-2">
                     OrBI was designed to be used without controllers and with few or no physical buttons, as is common
                     when individuals are introduced to virtual reality via smartphones and inexpensive HMDs such as
                     Google Cardboard.
                 </p>
 
                 <h2 id="projects"><b>Projects</b></h2>
-                <p>OrBI was originally designed for virtual reality apps in AVRGroup's VRTools project; links to some of
+                <p id="projects-text-1">OrBI was originally designed for virtual reality apps in AVRGroup's VRTools
+                    project; links to some of
                     those apps are provided below to demonstrate OrBI's features.
                 </p>
             </div>
@@ -89,7 +88,7 @@
                     <div class="w3-card">
                         <img src="img/projects-main-images/platonic-solids.jpeg" style="width: 100%;">
                         <div class="w3-container w3-center">
-                            <p class="w3-opacity">Platonic Solids</p>
+                            <p id="ps" class="w3-opacity">Platonic Solids</p>
                         </div>
                     </div>
                 </a>
@@ -99,7 +98,7 @@
                     <div class="w3-card">
                         <img src="img/projects-main-images/inclined-plane.png" style="width: 100%;">
                         <div class="w3-container w3-center">
-                            <p class="w3-opacity">Inclined Plane</p>
+                            <p id="ip" class="w3-opacity">Inclined Plane</p>
                         </div>
                     </div>
                 </a>
@@ -109,7 +108,7 @@
                     <div class="w3-card">
                         <img src="img/projects-main-images/vascular-diseases.png" style="width: 100%;">
                         <div class="w3-container w3-center">
-                            <p class="w3-opacity">Vascular Diseases</p>
+                            <p id="vs" class="w3-opacity">Vascular Diseases</p>
                         </div>
                     </div>
                 </a>
@@ -119,7 +118,7 @@
                     <div class="w3-card">
                         <img src="img/projects-main-images/virtual-travel.png" style="width: 100%;">
                         <div class="w3-container w3-center">
-                            <p class="w3-opacity">Virtual Travel</p>
+                            <p id="vt" class="w3-opacity">Virtual Travel</p>
                         </div>
                     </div>
                 </a>
@@ -127,7 +126,8 @@
 
             <div>
                 <h2 id="howto" class="w3-opacity"><b>How to use</b></h2>
-                <p class="w3-opacity">A simple application is provided below to show how OrBI works.</p>
+                <p id="howto-text-1" class="w3-opacity">A simple application is provided below to show how OrBI works.
+                </p>
                 <div class="w3-row-padding">
                     <div class="w3-col l6">
                         <iframe src="demo.html" class="w3-margin-top"
@@ -189,17 +189,69 @@
     </main>
 
     <footer class="w3-container w3-black w3-margin-top w3-padding-16">
-        <div>
-            <img class="w3-col w3-margin-top w3-margin-left" src="img/dev.jpg" alt="picture of the developer"
-                style="width: 5em; border-radius: 50%;">
-            <span class="w3-col w3-border-left w3-padding w3-margin-left w3-margin-top" style="width: fit-content;">
-                About the developer:<br> Paulo Rozatto is Computer Scicene Student at Universidade Federal de Juiz de
-                Fora. <br>
-                <a href="https://github.com/Paulo-Rozatto" rel="external" target="_blank"><img
-                        src="img/GitHub-Mark-Light-32px.png" alt="github logo" style="width: 24px;"></a>
-            </span>
-        </div>
+        <img class="w3-col w3-margin-top w3-margin-left" src="img/dev.jpg" alt="picture of the developer"
+            style="width: 5em; border-radius: 50%;">
+        <span class="w3-col w3-border-left w3-padding w3-margin-left w3-margin-top" style="max-width: 50vw;">
+            <b id="about-dev-1">About the developer:</b><br>
+            <span id="about-dev-2">Paulo Rozatto is Computer Scicene Student at Universidade Federal de Juiz de
+                Fora.</span> <br>
+            <a href="https://github.com/Paulo-Rozatto" rel="external" target="_blank"><img
+                    src="img/GitHub-Mark-Light-32px.png" alt="github logo" style="width: 24px;"></a>
+        </span>
     </footer>
+
+    <script>
+        TRANSLATION.add('#about', '<b>About</b>', '<b>Sobre</b>');
+        TRANSLATION.add('#projects', '<b>Projects</b>', '<b>Projetos</b>');
+        TRANSLATION.add('#howto', '<b>How to Use</b>', '<b>Como Usar</b>');
+
+        TRANSLATION.add(
+            '#about-text-1',
+            `OrBI is a virtual reality user interface developed with A-FRAME, a virtual reality framework built
+              on top of the THREE.js 3D library, which means that it can run on Oculus Quest, Rift, WMR, SteamVR,
+              desktop, and mobile, though the latter is the focus of this project.`,
+            `OrBI é uma interface gráfica para realidade virtual densenvolvida em A-FRAME, um framework de real
+            idade virtual constrúida com base na blibioteca THREE.js, o que significa que ela pode rodar Oculus
+             Quest, Rift, WMR, SteamVR, computadores e em dispositivos móveis, sendo a ultima opção o foco desse
+              projeto.`
+        );
+
+        TRANSLATION.add(
+            '#about-text-2',
+            `OrBI was designed to be used without controllers and with few or no physical buttons, as is common
+             when individuals are introduced to virtual reality via smartphones and inexpensive HMDs such as 
+             Google Cardboard.`,
+            `A OrBI foi pensada para ser usada sem controles e quando há poucos ou nehum botão disponível, o que
+            é comum quando as pessoas estão sendo introduzidas à realidade virtual via smartphones e HMDs de baixo
+             custo como o Google Cardboard.`
+        );
+
+        TRANSLATION.add(
+            '#projects-text-1',
+            `OrBI was originally designed for virtual reality apps in AVRGroup's VRTools project; links to some
+             of those apps are provided below to demonstrate OrBI's features.`,
+            `A OrBi foi densevolvida inicialmente para aplicações em realidade virtual do projeto VRTools do AV
+            RGroup. Algumas destas aplicações estão linkadas abaixo para demontras os recursos da OrBI.`
+        );
+
+        TRANSLATION.add(
+            '#howto-text-1',
+            `A simple application is provided below to show how OrBI works.`,
+            `Uma aplicação simples é mostrada abaixo para demonstrar o funcionamento OrBI`
+        );
+
+        TRANSLATION.add(
+            '#about-dev-1',
+            `About the developer:`,
+            `Sobre o desenvolvedor:`
+        );
+
+        TRANSLATION.add(
+            '#about-dev-2',
+            `Paulo Rozatto is Computer Scicene Student at Universidade Federal de Juiz de Fora.`,
+            `Paulo Rozatto é um estudante de Ciência da Computação da Universidade Federal de Juiz de Fora.`
+        );
+    </script>
 </body>
 
 </html>

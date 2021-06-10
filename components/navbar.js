@@ -4,7 +4,7 @@ class Navbar extends HTMLElement {
     }
 
     connectedCallback() {
-        const prevPath = window.location.origin === "https://avrgroup.github.io" ? '/OrBI/' : '/';
+        const prevPath = window.location.pathname;
 
         this.innerHTML = `
     <style>
