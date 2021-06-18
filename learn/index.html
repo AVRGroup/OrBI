@@ -35,7 +35,7 @@
     <!-- Page content -->
     <div class="w3-content w3-padding w3-opacity">
         <div class="w3-container">
-            <h3 id="ecs-title" class="w3-padding-16"><b>Using OrBI</b></h3>
+            <h3 id="ecs-title" class="w3-padding-16"><b id="using">Using OrBI</b></h3>
             <p id="text-1">
                 OrBI is a component in the entity-component-system (ECS) architecture used in A-Frame (refer to <a
                     href="https://aframe.io/docs/1.2.0/introduction/entity-component-system.html"
@@ -53,12 +53,12 @@
                 class="w3-code w3-black">&lt;a-entity vr-interface="orbits: 1 1.5; theta: 45; rho: 0;"&gt;&lt;/a-entity&gt;</pre>
 
             <p id="text-3" class="margin-top">As default, OrBI uses spherical coordinates to positionate the interface,
-                i.e, the position
+                i.e., the position
                 is defined with a radial distance from the camera and two angles.The property orbits defines the
                 possible distances, theta defines the horizontal angle, and rho defines the vertical angle.
             </p>
 
-            <p>It is also possible to positionate OrBI using cartesian coordinates, but then movement buttons are
+            <p id="text-33">It is also possible to positionate OrBI using cartesian coordinates, but then movement buttons are
                 disabled automatically.</p>
 
             <pre
@@ -104,7 +104,7 @@
 &lt;/html&gt;
 </pre>
 
-            <p class="w3-panel w3-card w3-yellow w3-padding">
+            <p id="warning-1" class="w3-panel w3-card w3-yellow w3-padding">
                 Notice the dimension property, it defines how the buttons will be displayed, in the case, 2 lines an 1
                 row.
             </p>
@@ -121,7 +121,7 @@
     &lt;a-entity vr-interface="dimension: 2 1; theta: 45" my-component&gt;&lt;/a-entity&gt;
 &lt;/a-scene&gt;</pre>
 
-            <h3 class="margin-top"><b>Properties:</b></h3>
+            <h3 class="margin-top"><b id="property-title">Properties:</b></h3>
 
             <table class="w3-table-all">
                 <colgroup>
@@ -132,154 +132,154 @@
 
                 <thead>
                     <tr>
-                        <th>Property</th>
-                        <th>Description</th>
-                        <th>Default Value</th>
+                        <th id="property">Property</th>
+                        <th id="description">Description</th>
+                        <th id="default">Default Value</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>dimension</td>
-                        <td>Dimension of the interface</td>
+                        <td id="dimension">Dimension of the interface</td>
                         <td>{ x: 1, y: 1 }</td>
                     </tr>
 
                     <tr>
                         <td>orbits</td>
-                        <td>Distances from the camera</td>
+                        <td id="orbits">Distances from the camera</td>
                         <td>1</td>
                     </tr>
 
                     <tr>
                         <td>theta</td>
-                        <td>Horizontal rotation in degrees</td>
+                        <td id="theta">Horizontal rotation in degrees</td>
                         <td>90</td>
                     </tr>
 
                     <tr>
                         <td>rho</td>
-                        <td>vertical rotation in degrees</td>
+                        <td id="rho">Vertical rotation in degrees</td>
                         <td>0</td>
                     </tr>
 
                     <tr>
                         <td>movementBar</td>
-                        <td>Whether to display move bar or not, doesn't work with worldPosition</td>
+                        <td id="movementBar">Whether to display move bar or not, doesn't work with worldPosition</td>
                         <td>true</td>
                     </tr>
 
                     <tr>
                         <td>worldPosition</td>
-                        <td>Cartesian way for positioning the interface, it overrides the default orbital way</td>
+                        <td id="worldPositon">Cartesian way for positioning the interface, it overrides the default orbital way</td>
                         <td>{ x: null, y: null, z: null }</td>
                     </tr>
 
                     <tr>
                         <td>rotation</td>
-                        <td>Defines the rotation in x, y and z when using worldPosition</td>
+                        <td id="rotation">Defines the rotation in x, y and z when using worldPosition</td>
                         <td>{ x:0, y:0, z:0 }</td>
                     </tr>
 
                     <tr>
                         <td>centralize</td>
-                        <td>Whether to align buttons to the center, if false they are aligned to the top-left</td>
+                        <td id="centralize">Whether to align buttons to the center, if false they are aligned to the top-left</td>
                         <td>true</td>
                     </tr>
 
                     <tr>
                         <td>buttonSize</td>
-                        <td>Width and height of the buttons</td>
+                        <td id="buttonSize">Width and height of the buttons</td>
                         <td>{ x: 0.3, y: 0.2 }</td>
                     </tr>
 
                     <tr>
                         <td>border</td>
-                        <td>Thickness and color of button border, if nothing is set, no border is added</td>
+                        <td id="border">Thickness and color of button border, if nothing is set, no border is added</td>
                         <td>{ thickness: 0, color: null }</td>
                     </tr>
 
                     <tr>
                         <td>gap</td>
-                        <td>Distance beteween the buttons in the x and y axis</td>
+                        <td id="gap">Distance beteween the buttons in the x and y axis</td>
                         <td>{ x: 0, y: 0}</td>
                     </tr>
 
                     <tr>
                         <td>transparency</td>
-                        <td>whether the textures have transparency</td>
+                        <td id="transparency">Whether the textures have transparency</td>
                         <td>false</td>
                     </tr>
 
                     <tr>
                         <td>messagePos</td>
-                        <td>Default position of message (top or bottom)</td>
+                        <td id="messagePos">Default position of message (top or bottom)</td>
                         <td>top</td>
                     </tr>
 
                     <tr>
                         <td>messageColor</td>
-                        <td>Text color of the message box</td>
+                        <td id="messageColor">Text color of the message box</td>
                         <td>white</td>
                     </tr>
 
                     <tr>
                         <td>messageBG</td>
-                        <td>background color of the message box</td>
+                        <td id="messageBG">Background color of the message box</td>
                         <td>#232323</td>
                     </tr>
 
                     <tr>
                         <td>cursorColor</td>
-                        <td>Defines the color of the aim cursor</td>
+                        <td id="cursorColor">Defines the color of the aim cursor</td>
                         <td>white</td>
                     </tr>
 
                     <tr>
                         <td>cursorPosition</td>
-                        <td>Defines the positon of the aim cursor, usually it doesn't need to change</td>
+                        <td id="cursorPosition">Defines the positon of the aim cursor, usually it doesn't need to change</td>
                         <td>{ x: 0, y: 0, z: -1 }</td>
                     </tr>
 
                     <tr>
                         <td>font</td>
-                        <td>Font URL. <a href="https://aframe.io/docs/1.2.0/components/text.html#fonts"
+                        <td id="font">Font URL. <a href="https://aframe.io/docs/1.2.0/components/text.html#fonts"
                                 target="_blank">Check here</a> valid fonts</td>
                         <td>A-Frame default (Roboto)</td>
                     </tr>
 
                     <tr>
                         <td>negate</td>
-                        <td>Negate font</td>
+                        <td id="negate">Negate font</td>
                         <td>true</td>
                     </tr>
 
                     <tr>
                         <td>sideTextSize</td>
-                        <td>Size for the lateral panel</td>
+                        <td id="sideTextSize">Size for the lateral panel</td>
                         <td>{ x: 0.75, y: 1 }</td>
                     </tr>
 
                     <tr>
                         <td>sideTextRotation</td>
-                        <td>Lateral panel rotation</td>
+                        <td id="sideTextRotation">Lateral panel rotation</td>
                         <td>0</td>
                     </tr>
 
                     <tr>
                         <td>visible</td>
-                        <td>Visibilty of the interface</td>
+                        <td id="visible">Visibilty of the interface</td>
                         <td>true</td>
                     </tr>
 
                     <tr>
                         <td>raycaster</td>
-                        <td>defines near and far properties of the raycaster</td>
+                        <td id="raycaster">Defines near and far properties of the raycaster</td>
                         <td>{ near: 0, far: orbits[0] }</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h3 class="margin-top"><b>Functions:</b></h3>
+            <h3 class="margin-top"><b id="function-title">Functions:</b></h3>
             <table class="w3-table-all">
                 <colgroup>
                     <col span="1" style="width: 50%;">
@@ -288,40 +288,40 @@
 
                 <thead>
                     <tr>
-                        <th>Function</th>
-                        <th>Description</th>
+                        <th id="function">Function</th>
+                        <th id="description">Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>addButton(buttonName, idOfTexture, callback)</td>
-                        <td>Adds a button to the interface</td>
+                        <td id="addButton">Adds a button to the interface</td>
                     </tr>
                     <tr>
                         <td>showMessage(message, position)</td>
-                        <td>Shows message, position parameter is optional</td>
+                        <td id="showMessage">Shows message, position parameter is optional</td>
                     </tr>
                     <tr>
                         <td>showSideText(text)</td>
-                        <td>Shows a permanent multiline message to the right of the interface</td>
+                        <td id="showSideText">Shows a permanent multiline message to the right of the interface</td>
                     </tr>
                     <tr>
                         <td>hideSideText()</td>
-                        <td>Hides side text</td>
+                        <td id="hideSideText">Hides side text</td>
                     </tr>
                     <tr>
                         <td>updatePosition({radius, theta, rho, worldPosition})</td>
-                        <td>Should be called if the camera position changes or if you want to change one parameter. All
+                        <td id="updatePosition">Should be called if the camera position changes or if you want to change one parameter. All
                             parameters are optional.</td>
                     </tr>
                     <tr>
                         <td>hide()</td>
-                        <td>Hide the interface</td>
+                        <td id="hide">Hide the interface</td>
                     </tr>
 
                     <tr>
                         <td>show()</td>
-                        <td>Make interface visible</td>
+                        <td id="show">Make interface visible</td>
                     </tr>
                 </tbody>
             </table>
@@ -334,6 +334,272 @@
     <script>
     </script>
 
+    <script>
+        TRANSLATION.add(
+            '#using',
+            'Using OrBI',
+            'Usando OrBI'
+        )
+
+         TRANSLATION.add(
+            '#text-1',
+            ' OrBI is a component in the entity-component-system (ECS) architecture used in A-Frame (refer to <a href="https://aframe.io/docs/1.2.0/introduction/entity-component-system.html"target="_blank">A-FRAME Docs</a>). It means that OrBI have to be attached to an entity to be added to the scene. The way you do it in A-Frame is through HMTL:',
+            'OrBI é um componente na arquitetura do sistema de componente de entidade (ECS) usada no A-Frame (consulte <a href = "https://aframe.io/docs/1.2.0/introduction/entity-component-system.html "target =" _ blank "> Documentos A-FRAME </a>). Isso significa que o OrBI deve ser anexado a uma entidade para ser adicionado à cena. A maneira como você faz isso em A-Frame é por meio de HMTL: '
+        );
+
+        TRANSLATION.add(
+            '#text-2',
+            'You can then set the properties to OrBI:',
+            'Você pode então definir as propriedades para OrBI:'
+        )
+
+        TRANSLATION.add(
+            '#text-3',
+            'As default, OrBI uses spherical coordinates to positionate the interface, i.e., the positionis defined with a radial distance from the camera and two angles.The property orbits defines the possible distances, theta defines the horizontal angle, and rho defines the vertical angle.',
+            'Como padrão, OrBI usa coordenadas esféricas para posicionar a interface, ou seja, a posição é definida com uma distância radial da câmera e dois ângulos. A propriedade orbita define as distâncias possíveis, theta define o ângulo horizontal e rho define o ângulo vertical.'
+        )
+
+        TRANSLATION.add(
+            '#text-33',
+            'It is also possible to positionate OrBI using cartesian coordinates, but then movement buttons are disabled automatically.',
+            'Também é possível posicionar OrBI usando coordenadas cartesianas, mas os botões de movimento são desativados automaticamente.'
+        )
+
+        TRANSLATION.add(
+            '#text-4',
+            'For creating buttons, we need to use javascript. The way we do it is creating an auxiliary component and adding to our entity.',
+            'Para criar botões, precisamos usar javascript. A maneira como o fazemos é criando um componente auxiliar e adicionando à nossa entidade.'
+        )
+
+        TRANSLATION.add(
+            '#warning-1',
+            ' Notice the dimension property, it defines how the buttons will be displayed, in the case, 2 lines an 1 row.',
+            ' Observe a propriedade de dimensão, ela define como os botões serão exibidos, no caso, 2 linhas por 1 linha.'
+        )
+
+        TRANSLATION.add(
+            '#text-5',
+            'If you plan to move the camera while using OrBI, wrap your camera entity with a entity with the id rig and move the rig instead of the camera itself.',
+            'Se você planeja mover a câmera enquanto usa o OrBI, envolva sua entidade de câmera com uma entidade com o id rig e mova o rig em vez da própria câmera.'
+        )
+
+        TRANSLATION.add(
+            '#property-title',
+            'Properties',
+            'Propriedades'
+        )
+
+        TRANSLATION.add(
+            '#property',
+            'Propriedade',
+            'Propriedade'
+        )
+
+        TRANSLATION.add(
+            '#description',
+            'Description',
+            'Descrição'
+        )
+
+        TRANSLATION.add(
+            '#default',
+            'Default Value',
+            'Valor Padrão'
+        )
+
+        TRANSLATION.add(
+            '#dimension',
+            'Dimension of the interface.',
+            'Dimensão da interface.'
+        );
+
+        TRANSLATION.add(
+            '#orbits',
+            'Distances from the camera.',
+            'Distância da câmera.'
+        )
+
+        TRANSLATION.add(
+            '#theta',
+            'Horizontal rotation in degrees.',
+            'Rotação horizontal em graus.'
+        )
+
+        TRANSLATION.add(
+            '#rho',
+            'vertical rotation in degrees.',
+            'Rotação vertical em graus.'
+        )
+
+        TRANSLATION.add(
+            '#movementBar',
+            'Whether to display move bar or not, does not work with worldPosition.',
+            'Mostrar a barra de movimento ou não, não funciona com worldPosition.'
+        )
+
+        TRANSLATION.add(
+            '#worldPositon',
+            'Cartesian way for positioning the interface, it overrides the default orbital way.',
+            'Forma cartesiana de posicionar a interface, isso substitui a forma orbital padrão.'
+        )
+
+        TRANSLATION.add(
+            '#rotation',
+            'Defines the rotation in x, y and z when using worldPosition.',
+            'Define a rotação em x, y e z quando estiver usando o worldPosition.'
+        )
+
+        TRANSLATION.add(
+            '#centralize',
+            'Whether to align buttons to the center, if false they are aligned to the top-left.',
+            'Se os botões devem ser alinhados ao centro, se for falso, eles serão alinhados no canto superior esquerdo.'
+        )
+
+        TRANSLATION.add(
+            '#buttonSize',
+            'Width and height of the buttons.',
+            'Largura e altura dos botões.'
+        )
+
+        TRANSLATION.add(
+            '#border',
+            'Thickness and color of button border, if nothing is set, no border is added.',
+            'Espessura e cor da borda do botão, se nada for definido, nenhuma borda será adicionada.'
+        )
+
+        TRANSLATION.add(
+            '#gap',
+            'Distance beteween the buttons in the x and y axis.',
+            'Distância entre os botões nos eixos x e y.'
+        )
+
+        TRANSLATION.add(
+            '#transparency',
+            'Whether the textures have transparency.',
+            'Determina se as texturas têm transparência.'
+        )
+
+        TRANSLATION.add(
+            '#messagePos',
+            'Default position of message (top or bottom).',
+            'Posição padrão da mensagem (superior ou inferior).'
+        )
+
+        TRANSLATION.add(
+            '#messageColor',
+            'Text color of the message box.',
+            'Cor do texto da caixa de mensagem.'
+        )
+
+        TRANSLATION.add(
+            '#messageBG',
+            'Background color of the message box.',
+            'Cor de fundo da caixa de mensagem.'
+        )
+
+        TRANSLATION.add(
+            '#cursorColor',
+            'Defines the color of the aim cursor.',
+            'Define a cor do cursor de mira.'
+        )
+
+        TRANSLATION.add(
+            '#cursorPosition',
+            'Defines the positon of the aim cursor, usually it does not need to change.',
+            'Define a posição do cursor de mira, geralmente não precisa mudar.'
+        )
+        
+        TRANSLATION.add(
+            '#font',
+            'Font URL. <a href="https://aframe.io/docs/1.2.0/components/text.html#fonts" target="_blank">Check here</a> valid fonts.',
+            'URL da fonte. <a href="https://aframe.io/docs/1.2.0/components/text.html#fonts" target="_blank"> Verifique aqui </a> fontes válidas.',
+        )
+
+        TRANSLATION.add(
+            '#negate',
+            'Negate font.',
+            'Fonte de negação.'
+        )
+
+        TRANSLATION.add(
+            '#sideTextSize',
+            'Size for the lateral panel.',
+            'Tamanho para o painel lateral.'
+        )
+
+        TRANSLATION.add(
+            '#sideTextRotation',
+            'Lateral panel rotation.',
+            'Rotação do painel lateral.'
+        )
+
+        TRANSLATION.add(
+            '#visible',
+            'Visibilty of the interface.',
+            'Visibilidade da interface.'
+        )
+
+        TRANSLATION.add(
+            '#raycaster',
+            'Defines near and far properties of the raycaster.',
+            'Define as propriedades próximas e distantes do raycaster.'
+        )
+
+        TRANSLATION.add(
+            '#function-title',
+            'Functions',
+            'Funções'
+        )
+
+        TRANSLATION.add(
+            '#function',
+            'Function',
+            'Função'
+        )
+
+        TRANSLATION.add(
+            '#addButton',
+            'Adds a button to the interface.',
+            'Adiciona um botão à interface.'
+        )
+
+        TRANSLATION.add(
+            '#showMessage',
+            'Shows message, position parameter is optional.',
+            'Mostra a mensagem, o parâmetro de posição é opcional.'
+        )
+
+        TRANSLATION.add(
+            '#showSideText',
+            'Shows a permanent multiline message to the right of the interface.',
+            'Mostra uma mensagem permanente em várias linhas à direita da interface.'
+        )
+
+        TRANSLATION.add(
+            '#hideSideText',
+            'Hides side text.',
+            'Oculta o texto lateral.'
+        )
+
+        TRANSLATION.add(
+            '#updatePosition',
+            'Should be called if the camera position changes or if you want to change one parameter. All parameters are optional.',
+            'Deve ser chamado se a posição da câmera for alterada ou se você quiser alterar um parâmetro. Todos os parâmetros são opcionais.'
+        )
+
+        TRANSLATION.add(
+            '#hide',
+            'Hide the interface.',
+            'Oculta a interface.'
+        )
+
+        TRANSLATION.add(
+            '#show',
+            'Make interface visible.',
+            'Faz a interface ficar visível.'
+        )
+
+    </script>
 </body>
 
 </html>
