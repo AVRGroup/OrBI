@@ -1,35 +1,35 @@
 /*
   Usage:
-  - Import vr-interface to your code:
-    <script type="text/javascript" charset="UTF-8" src="path/to/vr-interface.js"></script>
+  - Import orbi to your code:
+    <script type="text/javascript" charset="UTF-8" src="path/to/orbi.js"></script>
   - Call it in an aframe entity and pass the options to config like the example below:
-      <a-entity vr-interface="dimension: 3 2; orbits: 1 1.5 2 ; theta: 90; rho: 0; transparency: true; gap: 0.01 0.01; border: 1.2 #6d7584; movementBar: true"</a-entity>
+      <a-entity orbi="dimension: 3 2; orbits: 1 1.5 2 ; theta: 90; phi: 0; transparency: true; gap: 0.01 0.01; border: 1.2 #6d7584; movementBar: true"</a-entity>
   - To add buttons and use functions create a component in your code
     AFRAME.registerComponent('my-component', {
       init: function () {
-        const vrInterface = document.querySelector('[vr-interface]').components['vr-interface'];
-        vrInterface.addButton('myButton', '#myTexture', function() {
-          vrInterface.showMessage('Button pressed');
+        const orbi = document.querySelector('[orbi]').components['orbi'];
+        orbi.addButton('myButton', '#myTexture', function() {
+          orbi.showMessage('Button pressed');
         });
-        vrInterface.addButton('myButton2', '#myTexture2', function() {
-          vrInterface.showMessage('Button 2 pressed', 'bottom');
+        orbi.addButton('myButton2', '#myTexture2', function() {
+          orbi.showMessage('Button 2 pressed', 'bottom');
         });
-        vrInterface.addButton('myButtonRotate', '#myTexture3', function(){
-          vrInterface.updatePosition({theta: 180, rho: 15})
+        orbi.addButton('myButtonRotate', '#myTexture3', function(){
+          orbi.updatePosition({theta: 180, phi: 15})
         });
       },
     });
-    - There are two ways to define the position to the vr-interface: relative to the camera and relative to the world.
-      Positioning relative to the camera works similar to polar coordinates, where the camera is the pole and you define some orbits (distances to the camera), theta (horizontal angle), and rho (vertical angle)
-        <a-entity vr-interface="orbits: 1; theta: 45; rho: 45;"></a-entity>
+    - There are two ways to define the position to the orbi: relative to the camera and relative to the world.
+      Positioning relative to the camera works similar to polar coordinates, where the camera is the pole and you define some orbits (distances to the camera), theta (horizontal angle), and phi (vertical angle)
+        <a-entity orbi="orbits: 1; theta: 45; phi: 45;"></a-entity>
       Positioning relative to the world works like positioning regular a-frame object, you define position and rotation in each axis
-        <a-entity vr-interface="worldPosition: -1 1.6 -1; rotation: 0 45 0">
-      The advantage of positioning relative to the camera is being able to move the vr-interface if movementBar is set to true;
+        <a-entity orbi="worldPosition: -1 1.6 -1; rotation: 0 45 0">
+      The advantage of positioning relative to the camera is being able to move the orbi if movementBar is set to true;
   Properties:
   - visible: visibilty of the interface;
   - orbits: distances from the camera;
   - theta: horizontal rotation in degrees;
-  - rho: vertical rotation in degrees;
+  - phi: vertical rotation in degrees;
   - worldPosition: a second way for positioning the interface, it overrides the orbital way;
   - rotation: Defines the rotation in x, y and z;
   - movementBar: whether to display move bar or not, doesn't work with world position;
@@ -50,7 +50,7 @@
   - showMessage(message, position) - shows message, position parameter is optional
   - showSideText() - shows a permanent multiline message to the right of the interface
   - hideSideText() - hides side text
-  - updatePosition({radius, theta, rho, worldPosition}) - should be called if the camera position changes or if you want to change one parameter. All parameters are optional.
+  - updatePosition({radius, theta, phi, worldPosition}) - should be called if the camera position changes or if you want to change one parameter. All parameters are optional.
   - hide() - hide the interface
   - show() - make interface visible
   
@@ -58,7 +58,7 @@
   - Setting the dimension property correctly is important for displaying the vr interface elements correctly;
 */
 
-AFRAME.registerComponent('vr-interface', {
+AFRAME.registerComponent('orbi', {
   schema: {
     dimension: { type: 'vec2', default: { x: 1, y: 1 } },
     orbits: {
@@ -81,7 +81,7 @@ AFRAME.registerComponent('vr-interface', {
       }
     },
     theta: { type: 'number', default: 90, parse: (value) => value * Math.PI / 180 },
-    rho: { type: 'number', default: 0, parse: (value) => value * Math.PI / 180, },
+    phi: { type: 'number', default: 0, parse: (value) => value * Math.PI / 180, },
     movementBar: { type: 'bool', default: true },
     worldPosition: { type: 'vec3', default: null },
     rotation: {
@@ -95,7 +95,7 @@ AFRAME.registerComponent('vr-interface', {
         obj = obj.split(' ');
 
         if (obj.length != 3) {
-          console.warn('VR-Interface - Wrong number of parameters for rotation. Using default value');
+          console.warn('OrBI- Wrong number of parameters for rotation. Using default value');
           return result;
         }
 
@@ -174,9 +174,9 @@ AFRAME.registerComponent('vr-interface', {
     this.stopButtonCallback = null;
 
 
-    if (document.querySelector('#vrInterface-cursor') === null) {
+    if (document.querySelector('#orbi-cursor') === null) {
       this.cursor = document.createElement('a-entity');
-      this.cursor.id = 'vrInterface-cursor';
+      this.cursor.id = 'orbi-cursor';
       this.cursor.setAttribute('cursor', { fuse: true, fuseTimeout: 1000, });
       this.cursor.setAttribute('geometry', { primitive: 'ring', radiusInner: 0.005, radiusOuter: 0.01 });
       this.cursor.setAttribute('animation__click', 'property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1');
@@ -220,7 +220,7 @@ AFRAME.registerComponent('vr-interface', {
       this.radius = data.orbits[this.orbitIndex];
 
       this.el.object3D.rotation.y = data.theta;
-      this.buttonGroup.object3D.rotation.x = data.rho;
+      this.buttonGroup.object3D.rotation.x = data.phi;
 
       if (typeof data.raycaster.far === 'null') {
         data.raycaster.far = this.radius;
@@ -228,7 +228,7 @@ AFRAME.registerComponent('vr-interface', {
     }
 
     if (this.cursor) {
-      this.cursor.setAttribute('raycaster', { near: data.raycaster.near, far: data.raycaster.far, objects: '.vrInterface-button' });
+      this.cursor.setAttribute('raycaster', { near: data.raycaster.near, far: data.raycaster.far, objects: '.orbi-button' });
       this.cursor.setAttribute('position', { x: data.cursorPosition.x, y: data.cursorPosition.y, z: data.cursorPosition.z });
       this.cursor.setAttribute('material', { color: data.cursorColor, shader: 'flat' });
     }
@@ -270,8 +270,8 @@ AFRAME.registerComponent('vr-interface', {
     }
 
     if (this.isToChangeRho) {
-      this.data.rho = this.camera.object3D.rotation.x;
-      this.buttonGroup.object3D.rotation.x = this.data.rho;
+      this.data.phi = this.camera.object3D.rotation.x;
+      this.buttonGroup.object3D.rotation.x = this.data.phi;
     }
   },
   handleClick: function (evt) {
@@ -354,7 +354,7 @@ AFRAME.registerComponent('vr-interface', {
       this.buttonGroup.setObject3D(button.name + '-border', border);
     }
 
-    entity.classList.add('vrInterface-button');
+    entity.classList.add('orbi-button');
     this.buttons.push(button);
     this.buttonGroup.appendChild(entity);
   },
@@ -392,13 +392,15 @@ AFRAME.registerComponent('vr-interface', {
         self.isToChangeTheta = true;
         self.isClickBlocked = true;
 
+        sideTextVisibility = self.sideText.object3D.visible === true; // need comparing to true, because it can be undefined and being undef makes it visible below in stop func for some reason
+
         self.stopButton.visible = true;
         self.stopButton.position.set(
           (data.dimension.y / 2 * data.buttonSize.x + 0.06),
           0.16,
           0.01);
         self.stopButton.rotation.y = 0;
-        self.stopButton.el.classList.add('vrInterface-button');
+        self.stopButton.el.classList.add('orbi-button');
 
         if (typeof self.horizMovButtonCallback === 'function')
           self.horizMovButtonCallback();
@@ -422,7 +424,7 @@ AFRAME.registerComponent('vr-interface', {
           0.05
         );
         self.stopButton.rotation.y = self.sideText.object3D.visible ? self.pivot.object3D.rotation.y : 0;
-        self.stopButton.el.classList.add('vrInterface-button');
+        self.stopButton.el.classList.add('orbi-button');
 
         if (typeof self.vertiMovButtonCallback === 'function')
           self.vertiMovButtonCallback();
@@ -441,14 +443,14 @@ AFRAME.registerComponent('vr-interface', {
         self.sideText.object3D.visible = sideTextVisibility;
 
         self.stopButton.visible = false;
-        self.stopButton.el.classList.remove('vrInterface-button');
+        self.stopButton.el.classList.remove('orbi-button');
 
         if (typeof self.stopButtonCallback === 'function')
           self.stopButtonCallback();
       }
     );
     this.stopButton.visible = false;
-    this.stopButton.el.classList.remove('vrInterface-button');
+    this.stopButton.el.classList.remove('orbi-button');
 
     function makeMoveButton(name, img64, yPos, callback) {
       const image = new Image();
@@ -466,7 +468,7 @@ AFRAME.registerComponent('vr-interface', {
       button.object3D.position.y = yPos;
       button.object3D.children[0].name = name;
       button.object3D.onClick = callback;
-      button.classList.add('vrInterface-button');
+      button.classList.add('orbi-button');
       self.moveBar.appendChild(button);
 
       return button.object3D;
@@ -537,8 +539,8 @@ AFRAME.registerComponent('vr-interface', {
     else {
       button.position.set(
         j * (data.buttonSize.x + data.gap.x),
-        - (i * (data.buttonSize.y + data.gap.y)), //* Math.cos(data.rho)),
-        -this.radius  //- (i * (data.buttonSize.y + data.gap.y) * Math.sin(data.rho))
+        - (i * (data.buttonSize.y + data.gap.y)), //* Math.cos(data.phi)),
+        -this.radius  //- (i * (data.buttonSize.y + data.gap.y) * Math.sin(data.phi))
       );
     }
   },
@@ -579,7 +581,7 @@ AFRAME.registerComponent('vr-interface', {
     button.border.rotation.copy(button.rotation);
   },
   centralize: function (button) {
-    button.position.y += this.data.buttonSize.y * 0.5 * (this.data.dimension.x - 1) * Math.cos(this.data.rho); // data.dimension.x == lines
+    button.position.y += this.data.buttonSize.y * 0.5 * (this.data.dimension.x - 1) * Math.cos(this.data.phi); // data.dimension.x == lines
     button.position.x -= this.data.buttonSize.x * 0.5 * (this.data.dimension.y - 1); // data.dimension.y == columns
   },
   decentralize: function (button) {
@@ -597,8 +599,8 @@ AFRAME.registerComponent('vr-interface', {
         this.data.theta = args.theta * Math.PI / 180;
         this.el.object3D.rotation.y = this.data.theta;
       }
-      if (typeof args.rho === 'number') {
-        this.data.rho = args.rho * Math.PI / 180;
+      if (typeof args.phi === 'number') {
+        this.data.phi = args.phi * Math.PI / 180;
       }
 
       if (this.positioning === 'world') {

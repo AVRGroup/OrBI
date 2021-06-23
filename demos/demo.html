@@ -2,12 +2,12 @@
 
 <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://avrgroup.github.io/vrtools/projects/libs/vr-interface.js"></script>
+    <script src="https://avrgroup.github.io/vrtools/projects/libs/orbi.js"></script>
 
     <script>
         AFRAME.registerComponent('app', {
             init: function () {
-                const orbi = this.el.components['vr-interface'];
+                const orbi = this.el.components['orbi'];
                 this.box = document.querySelector('#box').object3D;
                 this.isToRotate = false;
 
@@ -39,7 +39,7 @@
             </a-entity>
         </a-entity>
 
-        <a-entity vr-interface="dimension: 1 1; orbits: 1 1.25; theta: 20; border: 1 #ABABAB; transparency: true;" app>
+        <a-entity orbi="dimension: 1 1; orbits: 1 1.25; theta: 20; border: 1 #ABABAB; transparency: true;" app>
         </a-entity>
     </a-scene>
 </body>

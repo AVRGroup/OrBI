@@ -50,12 +50,12 @@
             </p>
 
             <pre
-                class="w3-code w3-black">&lt;a-entity vr-interface="orbits: 1 1.5; theta: 45; rho: 0;"&gt;&lt;/a-entity&gt;</pre>
+                class="w3-code w3-black">&lt;a-entity vr-interface="orbits: 1 1.5; theta: 45; phi: 0;"&gt;&lt;/a-entity&gt;</pre>
 
             <p id="text-3" class="margin-top">As default, OrBI uses spherical coordinates to positionate the interface,
                 i.e, the position
                 is defined with a radial distance from the camera and two angles.The property orbits defines the
-                possible distances, theta defines the horizontal angle, and rho defines the vertical angle.
+                possible distances, theta defines the horizontal angle, and phi defines the vertical angle.
             </p>
 
             <p>It is also possible to positionate OrBI using cartesian coordinates, but then movement buttons are
@@ -157,7 +157,7 @@
                     </tr>
 
                     <tr>
-                        <td>rho</td>
+                        <td>phi</td>
                         <td>vertical rotation in degrees</td>
                         <td>0</td>
                     </tr>
@@ -310,7 +310,7 @@
                         <td>Hides side text</td>
                     </tr>
                     <tr>
-                        <td>updatePosition({radius, theta, rho, worldPosition})</td>
+                        <td>updatePosition({radius, theta, phi, worldPosition})</td>
                         <td>Should be called if the camera position changes or if you want to change one parameter. All
                             parameters are optional.</td>
                     </tr>
