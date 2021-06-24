@@ -73,19 +73,19 @@
 &lt;head&gt;
     [...]
     &lt;script src="path/to/aframe.min.js"&gt;&lt;/script&gt;
-    &lt;script src="path/to/vr-interface.js"&gt;&lt;/script&gt;
+    &lt;script src="path/to/orbi.js"&gt;&lt;/script&gt;
 
     &lt;script&gt;
         AFRAME.registerComponent('my-component', {
             init: function () {
-                const vrInterface = this.el.components['vr-interface'];
+                const orbi = this.el.components['orbi'];
 
-                vrInterface.addButton('myButton', '#myTexture', function () {
-                    vrInterface.showMessage('Button pressed');
+                orbi.addButton('myButton', '#myTexture', function () {
+                    orbi.showMessage('Button pressed');
                 });
 
-                vrInterface.addButton('myButton2', '#myTexture2', function () {
-                    vrInterface.showMessage('Button 2 pressed', 'bottom');
+                orbi.addButton('myButton2', '#myTexture2', function () {
+                    orbi.showMessage('Button 2 pressed', 'bottom');
                 });
             },
         });
